@@ -1,73 +1,823 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brainalgos</title>
-  <meta name="description" content="Brainalgos helps organizations and groups extract insight from complex data and systems.">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #111111;
-    }
-    .wrap {
-      max-width: 760px;
-      margin: 0 auto;
-      padding: 72px 24px;
-    }
-    h1 {
-      font-size: 44px;
-      margin: 0 0 8px 0;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-    .tag {
-      font-size: 18px;
-      margin: 0 0 36px 0;
-      color: #444;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin: 0 0 20px 0;
-    }
-    .section {
-      margin-top: 36px;
-    }
-    .small {
-      color: #555;
-      font-size: 16px;
-    }
-    a {
-      color: #111;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrainAlgos — Shyam Srinivasan</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:        #1a1a1a;
+    --paper:      #faf9f7;
+    --warm:       #f0ede8;
+    --faint:      #ddd8d0;
+    --muted:      #888;
+    --accent:     #2a2a2a;
+    --card-bg:    #faf9f7;
+    --section-gap: 96px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm);
+    color: var(--ink);
+    font-family: 'DM Mono', monospace;
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 13px;
+  }
+
+  /* ── LOGO SVG inline ── */
+  .logo-svg { display: block; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(240, 237, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+  }
+
+  .nav-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: var(--ink);
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle network background */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .hero-logo {
+    margin-bottom: 40px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(42px, 6vw, 72px);
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    color: var(--ink);
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+
+  .hero-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(16px, 2vw, 22px);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+
+  .hero-byline {
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+
+  .hero-byline::before,
+  .hero-byline::after {
+    content: '—';
+    margin: 0 12px;
+    opacity: 0.4;
+  }
+
+  .hero-about {
+    max-width: 560px;
+    margin: 40px auto 0;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.9;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+
+  .hero-scroll {
+    margin-top: 64px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #bbb;
+    animation: fadeUp 0.9s 0.6s ease both;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 40px;
+    background: var(--faint);
+    margin: 12px auto 0;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: 80px 48px var(--section-gap);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 56px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--faint);
+  }
+
+  .section-num {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #ccc;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+  }
+
+  .section-desc {
+    margin-left: auto;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    max-width: 260px;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ── PROJECT GRID ── */
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2px;
+  }
+
+  /* ── PROJECT CARD ── */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--faint);
+    padding: 36px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 2px;
+    background: var(--ink);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+
+  .card:hover { background: white; border-color: #ccc; }
+  .card:hover::before { transform: scaleY(1); }
+  .card.open { background: white; border-color: #bbb; }
+  .card.open::before { transform: scaleY(1); }
+
+  .card-tag {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 16px;
+  }
+
+  .card-summary {
+    font-size: 12px;
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .card-toggle {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+  }
+
+  .card:hover .card-toggle { color: var(--ink); }
+
+  .card-toggle-icon {
+    width: 16px;
+    height: 16px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.3s;
+  }
+
+  .card.open .card-toggle-icon { transform: rotate(45deg); }
+
+  /* ── CARD EXPANDED CONTENT ── */
+  .card-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.3s ease;
+    opacity: 0;
+  }
+
+  .card.open .card-body {
+    max-height: 2000px;
+    opacity: 1;
+  }
+
+  .card-body-inner {
+    padding-top: 28px;
+    border-top: 1px solid var(--faint);
+    margin-top: 24px;
+  }
+
+  .card-body-inner p {
+    font-size: 12px;
+    color: #555;
+    line-height: 1.95;
+    margin-bottom: 16px;
+  }
+
+  .card-body-inner p:last-child { margin-bottom: 0; }
+
+  .card-meta {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--faint);
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .card-meta-item {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #bbb;
+  }
+
+  .card-meta-item span {
+    color: var(--muted);
+    display: block;
+    margin-top: 2px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 11px;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    padding: 80px 48px;
+    border-top: 1px solid var(--faint);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-left .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .contact-left .contact-sub {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .contact-link {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-link:hover { color: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 24px 48px;
+    border-top: 1px solid var(--faint);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    color: #ccc;
+    text-transform: uppercase;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .section { padding: 60px 24px; }
+    .nav-links { display: none; }
+    .section-desc { display: none; }
+    .contact-section { padding: 60px 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <h1>BrainAlgos</h1>
-    <p class="tag">Data, Insight, Systems</p>
 
-    <p>
-      BrainAlgos helps organizations extract useful insight from complex data and systems.
-      We work across scientific, biomedical, and technical problems where standard analysis is not enough.
-    </p>
+<!-- ── NAV ── -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <!-- Inline B logo, small -->
+    <svg width="22" height="27" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="14" y1="30" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="30" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="30" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="30" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="30" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="30" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="30" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.17"/>
+      <line x1="14" y1="30" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="14" y1="55" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="55" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="55" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="55" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="55" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="55" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="80" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="14" y1="80" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="14" y1="80" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="80" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.26"/>
+      <line x1="14" y1="80" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.26"/>
+      <line x1="14" y1="80" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="80" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+      <line x1="14" y1="5"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="55" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="5"  x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="5"  x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="12" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="50" y1="26" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="40" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="55" x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="32" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="48" y1="64" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="54" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="95" x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="105" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="14" cy="30"  r="3.4" fill="#1a1a1a"/>
+      <circle cx="14" cy="55"  r="3.8" fill="#1a1a1a"/>
+      <circle cx="14" cy="80"  r="3.4" fill="#1a1a1a"/>
+      <circle cx="44" cy="12"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="50" cy="26"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="44" cy="40"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="30" cy="55"  r="3.2" fill="#1a1a1a"/>
+      <circle cx="32" cy="55"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="48" cy="64"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="54" cy="80"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="44" cy="95"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="14" cy="5"   r="3.2" fill="#1a1a1a"/>
+      <circle cx="14" cy="105" r="3.2" fill="#1a1a1a"/>
+    </svg>
+    <span class="nav-wordmark">BrainAlgos</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#consulting">Consulting</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-    <div class="section">
-      <p><strong>Focus</strong></p>
-      <p class="small">
-        Predictive analytics, pattern discovery, complex systems analysis, and custom data interpretation.
-      </p>
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+
+  <!-- Subtle background network pattern -->
+  <svg class="hero-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <line x1="100" y1="200" x2="400" y2="100" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="400" y1="100" x2="700" y2="300" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="700" y1="300" x2="1000" y2="150" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="1000" y1="150" x2="1100" y2="400" stroke="#1a1a1a" stroke-width="1"/>
+    <line x1="100" y1="200" x2="300" y2="450" stroke="#1a1a1a" stroke-width="0.7"/>
+    <line x1="300" y1="450" x2="700" y2="300" stroke="#1a1a1a" stroke-width="0.7"/>
+    <line x1="700" y1="300" x2="900" y2="550" stroke="#1a1a1a" stroke-width="0.7"/>
+    <line x1="900" y1="550" x2="1100" y2="400" stroke="#1a1a1a" stroke-width="0.7"/>
+    <line x1="300" y1="450" x2="500" y2="650" stroke="#1a1a1a" stroke-width="0.5"/>
+    <line x1="500" y1="650" x2="900" y2="550" stroke="#1a1a1a" stroke-width="0.5"/>
+    <line x1="400" y1="100" x2="300" y2="450" stroke="#1a1a1a" stroke-width="0.5"/>
+    <line x1="1000" y1="150" x2="900" y2="550" stroke="#1a1a1a" stroke-width="0.5"/>
+    <circle cx="100"  cy="200" r="5" fill="#1a1a1a"/>
+    <circle cx="400"  cy="100" r="5" fill="#1a1a1a"/>
+    <circle cx="700"  cy="300" r="7" fill="#1a1a1a"/>
+    <circle cx="1000" cy="150" r="5" fill="#1a1a1a"/>
+    <circle cx="1100" cy="400" r="4" fill="#1a1a1a"/>
+    <circle cx="300"  cy="450" r="5" fill="#1a1a1a"/>
+    <circle cx="900"  cy="550" r="5" fill="#1a1a1a"/>
+    <circle cx="500"  cy="650" r="4" fill="#1a1a1a"/>
+  </svg>
+
+  <div class="hero-logo">
+    <svg width="56" height="68" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="14" y1="30" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="30" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="30" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="30" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="30" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="30" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="30" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="30" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.17"/>
+      <line x1="14" y1="30" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="14" y1="30" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="14" y1="55" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="14" y1="55" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="55" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="55" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="55" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="55" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="55" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="55" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="80" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="14" y1="80" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="14" y1="80" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.17"/>
+      <line x1="14" y1="80" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="80" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.24"/>
+      <line x1="14" y1="80" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.24"/>
+      <line x1="14" y1="80" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="80" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="80" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="5"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="55" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="5"  x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="5"  x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="12" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="50" y1="26" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="40" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="55" x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="32" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="48" y1="64" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="54" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="95" x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="105" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="14" cy="30"  r="3.4" fill="#1a1a1a"/>
+      <circle cx="14" cy="55"  r="3.8" fill="#1a1a1a"/>
+      <circle cx="14" cy="80"  r="3.4" fill="#1a1a1a"/>
+      <circle cx="30" cy="5"   r="3.2" fill="#1a1a1a"/>
+      <circle cx="44" cy="12"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="50" cy="26"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="44" cy="40"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="30" cy="55"  r="3.2" fill="#1a1a1a"/>
+      <circle cx="32" cy="55"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="48" cy="64"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="54" cy="80"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="44" cy="95"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="30" cy="105" r="3.2" fill="#1a1a1a"/>
+      <circle cx="14" cy="5"   r="3.2" fill="#1a1a1a"/>
+      <circle cx="14" cy="105" r="3.2" fill="#1a1a1a"/>
+    </svg>
+  </div>
+
+  <h1 class="hero-name">Shyam Srinivasan</h1>
+  <p class="hero-company">BrainAlgos</p>
+  <p class="hero-byline">Complex Data, Clear Insight</p>
+
+  <p class="hero-about">
+    Independent consultant and researcher working at the intersection of AI, data systems, and computational neuroscience.
+    A career spanning core internet infrastructure, cryptographic systems, supercomputing, and published neuroscience research.
+  </p>
+
+  <p class="hero-scroll">Work</p>
+</section>
+
+<!-- ── RESEARCH SECTION ── -->
+<div id="research" style="padding-top: 40px;">
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Research</h2>
+    <p class="section-desc">Published work in computational neuroscience with direct implications for AI and large-scale system design.</p>
+  </div>
+
+  <div class="project-grid">
+
+    <!-- Research Card 1 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Neuroscience · AI · Systems Design</div>
+      <h3 class="card-title">Scalable Neural Systems: Principles from Biology for Engineered Design</h3>
+      <p class="card-summary">How the brain achieves scalable, resource-efficient architecture — and what that means for AI infrastructure design.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>The brain is one of nature's most sophisticated examples of a scalable, resource-efficient architecture. In this line of research, conducted in affiliation with UC San Diego and the Salk Institute, we examined how biological neural systems achieve scalability, asking why the brain is designed the way it is and what general principles that reveals for any complex system operating under resource constraints.</p>
+          <p>The core insight is that evolution, working under finite energy budgets, converges on designs that are both maximally efficient and reusable across scales. Within a group of related organisms like mammals, development follows a shared program, meaning that the most effective way to change performance is simply to change system size. Critically, the environment can demand a change in size without giving the system time or opportunity to go through another full optimisation process. For the system to meet that demand without sacrificing efficiency, its architecture must already be scalable. Scalability is not a convenience. It is a prerequisite for adaptability in dynamic environments. This same logic applies to subsystems: the modular design of sensory circuits allows evolution to scale up hearing in bats or vision in humans by adjusting the size of the relevant module rather than redesigning it from scratch.</p>
+          <p>We studied this across three neural systems: visual, olfactory and cerebellar. Demonstrating that their computational circuits follow a scalable design and that this produces predictable performance gains across scales required substantial empirical and analytical work: mapping circuit architecture, identifying the relevant computational elements, and establishing that the scaling relationships were consistent and non-trivial. Using power law analysis, statistical reasoning and information theory we then showed not just that these systems scale, but why they scale the way they do.</p>
+          <p>We also examined a subtler but equally important aspect of brain architecture: the role of non-neuronal cells. Glial cells are as numerous as neurons and actively support and modulate neural function. Like the support structure of any dynamical system, they are not peripheral. They are load-bearing. We showed that glial populations scale in proportion to neural circuit size. If they did not, the efficiency gains from scalable circuit design would be undermined, because the support infrastructure would become a bottleneck as the system grew. The analogy to engineered systems is direct: you cannot simply increase the number of GPUs to improve performance. Cooling systems, memory bandwidth, and interconnects have to scale proportionally too, or the gains evaporate.</p>
+          <p>The broader implication is that any complex system operating in a resource-constrained environment faces the same fundamental pressures that shaped the brain. The principles governing biological scalability, modularity, efficient coding, and proportional scaling of complementary components, are directly applicable to the design of AI systems, data centres, and large-scale engineered architectures. As the energy cost of AI infrastructure becomes a critical concern, these principles offer a rigorous, biologically validated framework for thinking about scalable and efficient system design. This work is documented across several publications.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Affiliation<span>UC San Diego · Salk Institute</span></div>
+            <div class="card-meta-item">Methods<span>Power law analysis · Information theory · Statistics</span></div>
+            <div class="card-meta-item">Status<span>Published</span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="section">
-      <p><strong>Contact</strong></p>
-      <p class="small">
-        <a href="mailto:shyam@brainalgos.com">shyam@brainalgos.com</a>
-      </p>
+    <!-- Research Card 2 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Neuroscience · Machine Learning</div>
+      <h3 class="card-title">Discrimination Learning: How the Brain Separates Similar Experiences</h3>
+      <p class="card-summary">A biological mechanism for learning finer distinctions over time — with direct implications for catastrophic forgetting in AI.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>All animals display perceptual learning: two stimuli that are initially indistinguishable become separable through experience. This is a fundamental feature of biological intelligence, yet the mechanism behind it is poorly understood. We investigated this question using olfactory learning in both mammals and invertebrates, giving us a comparative window into whether the underlying mechanism is conserved across very different nervous systems.</p>
+          <p>We showed that variability in olfactory responses, rather than being noise to be eliminated, plays a functional role. Coupled with a recurrent negative feedback mechanism, this variability enables the system to progressively separate the representations of similar stimuli over time. The brain is not simply storing experiences. It is actively restructuring its internal representations through feedback and controlled randomness to make finer and finer distinctions.</p>
+          <p>The implications extend directly into machine learning. One of the persistent challenges in AI is catastrophic forgetting: when a model learns a new category, it tends to overwrite what it previously learned, requiring the whole system to be retrained. The biological mechanism we identified suggests a different approach. By exploiting variability and using recurrent negative feedback to sharpen distinctions incrementally, a system can learn new categories without disturbing existing ones. This points toward more efficient and robust learning architectures that do not require retraining from scratch every time new information is introduced.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Affiliation<span>UC San Diego · Salk Institute</span></div>
+            <div class="card-meta-item">Methods<span>Recurrent negative feedback · Variability analysis</span></div>
+            <div class="card-meta-item">Status<span>Published</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Card 3 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Neuroscience · Deep Learning</div>
+      <h3 class="card-title">Bridging Insect Learning Circuits and Deep Learning</h3>
+      <p class="card-summary">A simple, fully mapped biological circuit that outperforms large AI systems on certain tasks — and what it can teach us.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>Deep learning systems have achieved remarkable results, but they require enormous computational resources and vast amounts of training data. Biological systems, by contrast, learn efficiently under tight resource constraints. The question is whether there are lessons from biology that could inform better machine learning architectures.</p>
+          <p>This review focused on one of the most tractable model systems in neuroscience: the fruit fly. The fly's learning circuit is small enough that the full set of neurons and their connections are known. The learning mechanism is understood. And yet the fly performs remarkably sophisticated learning tasks, including fine-grained sensory discrimination and flexible behavioural adaptation, that challenge even large-scale machine learning systems. It does all of this on a fraction of the energy budget.</p>
+          <p>The argument of the review was straightforward. Here is a system where we know exactly what is happening, why it works, and how it achieves efficiency. Rather than continuing to scale up machine learning systems by brute force, why not extract the computational principles that make the fly's circuit so effective and apply them to deep learning architectures? The review drew direct connections between the fly's learning mechanisms and open problems in deep learning, making the case that biological circuits at this scale are not just a curiosity but a genuine design resource.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Affiliation<span>UC San Diego · Salk Institute</span></div>
+            <div class="card-meta-item">Type<span>Co-authored Review</span></div>
+            <div class="card-meta-item">Status<span>Published</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Card 4 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">AI · Clinical Research · Neuroscience</div>
+      <h3 class="card-title">Early Detection of Alzheimer's Disease Using Hybrid Machine Learning</h3>
+      <p class="card-summary">A novel hybrid algorithm achieving up to 80% accuracy on early-stage AD prediction — designed for small clinical datasets.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>One of the central challenges in Alzheimer's disease research is predicting onset before symptoms appear. This is difficult because the disease is poorly understood at the causal level, making early indicators hard to identify. At the same time, a growing body of publicly available data now captures biomarkers and clinical symptom markers across different stages of the disease, creating an opportunity to trace how these markers evolve as the disease progresses.</p>
+          <p>A core technical obstacle is data scarcity. Traditional deep learning models require datasets on the order of millions of samples. A good clinical dataset in this domain might have 5,000 patients. This rules out standard approaches and demands something more efficient. We developed a hybrid algorithm that addresses this directly: an information maximisation step first identifies the most predictive biomarkers, which are then fed into a Naive Bayes classifier augmented with a gradient descent optimisation layer to weight the most promising features appropriately. In preliminary results the model achieves up to 80% accuracy on early-stage patient data.</p>
+          <p>A further limitation of most commercial models, including tools like Precivity, is that they operate on a fixed set of biomarkers. Our Bayesian core accumulates evidence across whatever markers are available, making it both flexible and agnostic to the specific inputs a patient presents. The next phase of the work focuses on extending this further, building a model that can generalise across varying biomarker types and data sources without requiring a fixed input schema.</p>
+          <p>This work was carried out as independent research funded in 2024, in association with the Neurolinx Research Institute and in collaboration with scientists at the Alzheimer's Disease Research Center at UC San Diego.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Affiliation<span>Neurolinx Research Institute · UCSD ADRC</span></div>
+            <div class="card-meta-item">Methods<span>Information maximisation · Naive Bayes · Gradient descent</span></div>
+            <div class="card-meta-item">Status<span>Ongoing · Paper in preparation</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ── CONSULTING SECTION ── -->
+<div id="consulting" style="padding-top: 40px;">
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Consulting & Engineering</h2>
+    <p class="section-desc">Software, systems and infrastructure work across two decades — from internet backbone hardware to AI-powered document analysis.</p>
+  </div>
+
+  <div class="project-grid">
+
+    <!-- Consulting Card 1 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">NLP · Cryptography · Document Analysis</div>
+      <h3 class="card-title">Sensitive Information Detection and Selective Readership</h3>
+      <p class="card-summary">A document intelligence system for a cryptography startup — from chemical manufacturing to Hollywood film production.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>Developed a document analysis module for a cryptography startup that scanned documents for user-defined sensitive content, personal information, financial data, or any custom category. The first phase used rule-based detection tailored to specific industries where document structures were known and predictable. A second phase explored NLP and machine learning approaches for broader matching across unknown document types.</p>
+          <p>The same core technology was extended in two directions. First, selective encryption: flagging relevant text so only authorised readers could decrypt it. Second, selective readership: given a parameter such as a character name in a film script, the system would highlight every passage involving that character and mask the rest. This allowed film productions to share scripts with actors without revealing the full story. During development the target industries included chemical manufacturing and film production, reflecting how flexibly the system could be pointed at very different problems.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Type<span>Consulting</span></div>
+            <div class="card-meta-item">Methods<span>Rule-based detection · NLP · Machine learning</span></div>
+            <div class="card-meta-item">Industries<span>Chemical · Film production</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consulting Card 2 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">HPC · Supercomputing · MPI</div>
+      <h3 class="card-title">Kabru Supercomputer — Network Architecture and Resource Management</h3>
+      <p class="card-summary">Core design team member for Kabru, at the time the second fastest supercomputer in India, supporting physics and weather research.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>Member of the core design team that built Kabru at the Institute of Mathematical Sciences, at the time the second fastest supercomputer in India. This was pioneering work at a scale very few teams in the country were tackling at the time. Focused on network load balancing at the architectural level and developed MPI programs to manage resource allocation for high-performance computing, supporting research including weather forecasting simulations.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Institution<span>Institute of Mathematical Sciences</span></div>
+            <div class="card-meta-item">Methods<span>MPI · Network load balancing · HPC architecture</span></div>
+            <div class="card-meta-item">Application<span>Physics · Weather forecasting</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Consulting Card 3 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Embedded Systems · Networking · Infrastructure</div>
+      <h3 class="card-title">Core Internet Infrastructure, Lucent Technologies</h3>
+      <p class="card-summary">Senior Software Design Engineer on the CBX-500 ATM switches that formed the backbone of the early commercial internet.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>At its peak, Lucent's ATM switches were among the dominant infrastructure in internet backbone routing, handling a significant portion of global traffic. As a Senior Software Design Engineer at Lucent, I worked on the T3 and E3 interfaces of the CBX-500 ATM Gigabit switches, the hardware that sat inside local service providers and formed the backbone connecting cities across the internet. My work involved writing low-level embedded software implementing TCP/IP and networking protocols for these switches, as well as diagnosing and resolving technical issues escalated by customers in the field. This was infrastructure work at the most critical layer of the early commercial internet.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Company<span>Lucent Technologies</span></div>
+            <div class="card-meta-item">Role<span>Senior Software Design Engineer</span></div>
+            <div class="card-meta-item">Methods<span>Embedded systems · TCP/IP · ATM networking</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ── CONTACT ── -->
+<div id="contact">
+  <div class="contact-section">
+    <div class="contact-left">
+      <p class="contact-title">Get in touch</p>
+      <p class="contact-sub">Available for consulting, research collaboration, and advisory work.</p>
+    </div>
+    <div class="contact-right">
+      <a href="mailto:shyam@brainalgos.com" class="contact-link">shyam@brainalgos.com</a>
+      <a href="https://brainalgos.com" class="contact-link" target="_blank">brainalgos.com</a>
+      <a href="https://brainalgos.github.io" class="contact-link" target="_blank">github.com/brainalgos</a>
     </div>
   </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>BrainAlgos · Shyam Srinivasan</p>
+  <p>Complex Data, Clear Insight</p>
+</footer>
+
+<script>
+  function toggleCard(card) {
+    const isOpen = card.classList.contains('open');
+    // Close all open cards
+    document.querySelectorAll('.card.open').forEach(c => c.classList.remove('open'));
+    // Open clicked card if it was closed
+    if (!isOpen) card.classList.add('open');
+  }
+</script>
+
 </body>
 </html>
