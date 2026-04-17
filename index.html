@@ -57,7 +57,7 @@
   .nav-wordmark {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
-    font-size: 18px;
+    font-size: 24px;
     letter-spacing: 0.12em;
     color: var(--ink);
     text-transform: uppercase;
@@ -70,8 +70,8 @@
   }
 
   .nav-links a {
-    font-size: 10px;
-    letter-spacing: 0.18em;
+    font-size: 13px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
     text-decoration: none;
@@ -82,12 +82,12 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh;
+    min-height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 120px 48px 80px;
+    padding: 120px 48px 48px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -144,30 +144,33 @@
   }
 
   .hero-about {
-    max-width: 560px;
+    max-width: 600px;
     margin: 40px auto 0;
-    font-size: 13px;
-    color: #666;
-    line-height: 1.9;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.95;
     animation: fadeUp 0.9s 0.4s ease both;
   }
 
   .hero-scroll {
     margin-top: 64px;
-    font-size: 9px;
-    letter-spacing: 0.2em;
+    margin-bottom: -48px;
+    font-size: 13px;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: #bbb;
+    color: #666;
     animation: fadeUp 0.9s 0.6s ease both;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-scroll::after {
     content: '';
     display: block;
     width: 1px;
-    height: 40px;
-    background: var(--faint);
-    margin: 12px auto 0;
+    height: 24px;
+    background: #999;
+    margin: 8px auto 0;
   }
 
   /* ── SECTIONS ── */
@@ -202,10 +205,10 @@
 
   .section-desc {
     margin-left: auto;
-    font-size: 10px;
+    font-size: 13px;
     color: var(--muted);
-    letter-spacing: 0.06em;
-    max-width: 260px;
+    letter-spacing: 0.03em;
+    max-width: 300px;
     text-align: right;
     line-height: 1.7;
   }
@@ -245,8 +248,8 @@
   .card.open::before { transform: scaleY(1); }
 
   .card-tag {
-    font-size: 8px;
-    letter-spacing: 0.2em;
+    font-size: 11px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #bbb;
     margin-bottom: 14px;
@@ -263,15 +266,15 @@
   }
 
   .card-summary {
-    font-size: 12px;
+    font-size: 13px;
     color: #777;
     line-height: 1.8;
     margin-bottom: 20px;
   }
 
   .card-toggle {
-    font-size: 9px;
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--muted);
     display: flex;
@@ -317,10 +320,10 @@
   }
 
   .card-body-inner p {
-    font-size: 12px;
+    font-size: 14px;
     color: #555;
-    line-height: 1.95;
-    margin-bottom: 16px;
+    line-height: 2;
+    margin-bottom: 18px;
   }
 
   .card-body-inner p:last-child { margin-bottom: 0; }
@@ -350,15 +353,13 @@
     font-size: 11px;
   }
 
-  /* ── CONTACT ── */
   .contact-section {
     padding: 80px 48px;
     border-top: 1px solid var(--faint);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 0;
     max-width: 1200px;
     margin: 0 auto;
   }
@@ -368,31 +369,53 @@
     font-weight: 300;
     font-size: 28px;
     letter-spacing: 0.04em;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
+    line-height: 1.4;
   }
 
   .contact-left .contact-sub {
-    font-size: 11px;
+    font-size: 13px;
     color: var(--muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
   }
 
   .contact-right {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-end;
+    display: grid;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 12px;
+    text-align: right;
   }
 
   .contact-link {
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    letter-spacing: 0.06em;
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
+    line-height: 1.4;
+    display: block;
   }
 
   .contact-link:hover { color: var(--ink); }
+
+  .contact-link-primary {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+
+  .contact-link-secondary {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
 
   /* ── FOOTER ── */
   footer {
@@ -433,49 +456,104 @@
 <!-- ── NAV ── -->
 <nav>
   <a href="#top" class="nav-logo">
-    <!-- Inline B logo, small -->
-    <svg width="22" height="27" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <line x1="14" y1="30" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="30" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="30" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
+    <!-- Inline BA logo, nav size -->
+    <svg width="36" height="27" viewBox="0 0 155 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- B fan -->
+      <line x1="14" y1="30" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="30" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="30" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="30" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
       <line x1="14" y1="30" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
       <line x1="14" y1="30" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
       <line x1="14" y1="30" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
       <line x1="14" y1="30" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.17"/>
       <line x1="14" y1="30" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
-      <line x1="14" y1="55" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
-      <line x1="14" y1="55" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
-      <line x1="14" y1="55" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
-      <line x1="14" y1="55" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
-      <line x1="14" y1="55" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="30" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="14" y1="55" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="14" y1="55" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="55" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="55" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="14" y1="55" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="55" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
       <line x1="14" y1="55" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="14" y1="55" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="80" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
       <line x1="14" y1="80" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
-      <line x1="14" y1="80" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
-      <line x1="14" y1="80" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
-      <line x1="14" y1="80" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.26"/>
-      <line x1="14" y1="80" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.26"/>
-      <line x1="14" y1="80" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
-      <line x1="14" y1="80" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.32"/>
-      <line x1="14" y1="5"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="14" y1="55" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="14" y1="5"  x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="30" y1="5"  x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="12" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="50" y1="26" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="40" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="30" y1="55" x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="32" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="48" y1="64" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="54" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="95" x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="14" y1="80" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.17"/>
+      <line x1="14" y1="80" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="14" y1="80" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.24"/>
+      <line x1="14" y1="80" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.24"/>
+      <line x1="14" y1="80" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <line x1="14" y1="80" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
+      <line x1="14" y1="80" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
+      <!-- Bridge -->
+      <line x1="44" y1="12"  x2="88"  y2="5"   stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="30" y1="5"   x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="30" y1="55"  x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="48" y1="64"  x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="30" y1="105" x2="68"  y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="44" y1="12"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="54" y1="80"  x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="54" y1="80"  x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="44" y1="95"  x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <!-- A fan -->
+      <line x1="88" y1="5"  x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="88" y1="5"  x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="88" y1="5"  x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="88" y1="5"  x2="68"  y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="88" y1="5"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="88" y1="5"  x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="88" y1="5"  x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="88" y1="5"  x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="83" y1="30" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.24"/>
+      <line x1="83" y1="30" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="83" y1="30" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="83" y1="30" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.4" opacity="0.10"/>
+      <line x1="78" y1="55" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="78" y1="55" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="78" y1="55" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="78" y1="55" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="73" y1="80" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.4" opacity="0.10"/>
+      <line x1="73" y1="80" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="73" y1="80" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="73" y1="80" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="68" y1="105" x2="93" y2="30"  stroke="#1a1a1a" stroke-width="0.3" opacity="0.08"/>
+      <line x1="68" y1="105" x2="98" y2="55"  stroke="#1a1a1a" stroke-width="0.4" opacity="0.12"/>
+      <line x1="68" y1="105" x2="103" y2="80" stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="68" y1="105" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <!-- B letterform -->
+      <line x1="14" y1="5"   x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="55"  x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="5"   x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="5"   x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="12"  x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="50" y1="26"  x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="40"  x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="55"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="14" y1="55"  x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="32" y1="55"  x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="48" y1="64"  x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="54" y1="80"  x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="95"  x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
       <line x1="30" y1="105" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- A letterform -->
+      <line x1="88" y1="5"  x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="83" y1="30" x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="78" y1="55" x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="73" y1="80" x2="68"  y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="88" y1="5"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="93" y1="30" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="98" y1="55" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="103" y1="80" x2="108" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="78" y1="55" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- B nodes -->
       <circle cx="14" cy="30"  r="3.4" fill="#1a1a1a"/>
       <circle cx="14" cy="55"  r="3.8" fill="#1a1a1a"/>
       <circle cx="14" cy="80"  r="3.4" fill="#1a1a1a"/>
+      <circle cx="30" cy="5"   r="3.2" fill="#1a1a1a"/>
       <circle cx="44" cy="12"  r="2.8" fill="#1a1a1a"/>
       <circle cx="50" cy="26"  r="2.8" fill="#1a1a1a"/>
       <circle cx="44" cy="40"  r="2.8" fill="#1a1a1a"/>
@@ -484,8 +562,19 @@
       <circle cx="48" cy="64"  r="2.8" fill="#1a1a1a"/>
       <circle cx="54" cy="80"  r="2.8" fill="#1a1a1a"/>
       <circle cx="44" cy="95"  r="2.8" fill="#1a1a1a"/>
+      <circle cx="30" cy="105" r="3.2" fill="#1a1a1a"/>
       <circle cx="14" cy="5"   r="3.2" fill="#1a1a1a"/>
       <circle cx="14" cy="105" r="3.2" fill="#1a1a1a"/>
+      <!-- A nodes -->
+      <circle cx="88"  cy="5"   r="4.0" fill="#1a1a1a"/>
+      <circle cx="83"  cy="30"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="78"  cy="55"  r="3.0" fill="#1a1a1a"/>
+      <circle cx="73"  cy="80"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="68"  cy="105" r="3.2" fill="#1a1a1a"/>
+      <circle cx="93"  cy="30"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="98"  cy="55"  r="3.0" fill="#1a1a1a"/>
+      <circle cx="103" cy="80"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="108" cy="105" r="3.2" fill="#1a1a1a"/>
     </svg>
     <span class="nav-wordmark">BrainAlgos</span>
   </a>
@@ -524,7 +613,8 @@
   </svg>
 
   <div class="hero-logo">
-    <svg width="56" height="68" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="88" height="68" viewBox="0 0 155 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- B fan -->
       <line x1="14" y1="30" x2="30" y2="5"   stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
       <line x1="14" y1="30" x2="44" y2="12"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
       <line x1="14" y1="30" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
@@ -555,20 +645,67 @@
       <line x1="14" y1="80" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
       <line x1="14" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.30"/>
       <line x1="14" y1="80" x2="30" y2="105" stroke="#1a1a1a" stroke-width="0.7" opacity="0.28"/>
-      <line x1="14" y1="5"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="14" y1="55" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
-      <line x1="14" y1="5"  x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="30" y1="5"  x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="12" x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="50" y1="26" x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="40" x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="30" y1="55" x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="14" y1="55" x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="32" y1="55" x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="48" y1="64" x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="54" y1="80" x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
-      <line x1="44" y1="95" x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- Bridge -->
+      <line x1="44" y1="12"  x2="88"  y2="5"   stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="30" y1="5"   x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="30" y1="55"  x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="48" y1="64"  x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="30" y1="105" x2="68"  y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="44" y1="12"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="54" y1="80"  x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="54" y1="80"  x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="44" y1="95"  x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <!-- A fan -->
+      <line x1="88" y1="5"  x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="88" y1="5"  x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="88" y1="5"  x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="88" y1="5"  x2="68"  y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="88" y1="5"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="88" y1="5"  x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="88" y1="5"  x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="88" y1="5"  x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.12"/>
+      <line x1="83" y1="30" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.24"/>
+      <line x1="83" y1="30" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="83" y1="30" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="83" y1="30" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.4" opacity="0.10"/>
+      <line x1="78" y1="55" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="78" y1="55" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.7" opacity="0.26"/>
+      <line x1="78" y1="55" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <line x1="78" y1="55" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.5" opacity="0.14"/>
+      <line x1="73" y1="80" x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="0.4" opacity="0.10"/>
+      <line x1="73" y1="80" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="73" y1="80" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="0.6" opacity="0.22"/>
+      <line x1="73" y1="80" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.18"/>
+      <line x1="68" y1="105" x2="93" y2="30"  stroke="#1a1a1a" stroke-width="0.3" opacity="0.08"/>
+      <line x1="68" y1="105" x2="98" y2="55"  stroke="#1a1a1a" stroke-width="0.4" opacity="0.12"/>
+      <line x1="68" y1="105" x2="103" y2="80" stroke="#1a1a1a" stroke-width="0.5" opacity="0.16"/>
+      <line x1="68" y1="105" x2="108" y2="105" stroke="#1a1a1a" stroke-width="0.6" opacity="0.20"/>
+      <!-- B letterform -->
+      <line x1="14" y1="5"   x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="55"  x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round"/>
+      <line x1="14" y1="5"   x2="30" y2="5"   stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="5"   x2="44" y2="12"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="12"  x2="50" y2="26"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="50" y1="26"  x2="44" y2="40"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="40"  x2="30" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="30" y1="55"  x2="14" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="14" y1="55"  x2="32" y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="32" y1="55"  x2="48" y2="64"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="48" y1="64"  x2="54" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="54" y1="80"  x2="44" y2="95"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="44" y1="95"  x2="30" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
       <line x1="30" y1="105" x2="14" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- A letterform -->
+      <line x1="88" y1="5"  x2="83"  y2="30"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="83" y1="30" x2="78"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="78" y1="55" x2="73"  y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="73" y1="80" x2="68"  y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="88" y1="5"  x2="93"  y2="30"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="93" y1="30" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="98" y1="55" x2="103" y2="80"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="103" y1="80" x2="108" y2="105" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <line x1="78" y1="55" x2="98"  y2="55"  stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- B nodes -->
       <circle cx="14" cy="30"  r="3.4" fill="#1a1a1a"/>
       <circle cx="14" cy="55"  r="3.8" fill="#1a1a1a"/>
       <circle cx="14" cy="80"  r="3.4" fill="#1a1a1a"/>
@@ -584,6 +721,16 @@
       <circle cx="30" cy="105" r="3.2" fill="#1a1a1a"/>
       <circle cx="14" cy="5"   r="3.2" fill="#1a1a1a"/>
       <circle cx="14" cy="105" r="3.2" fill="#1a1a1a"/>
+      <!-- A nodes -->
+      <circle cx="88"  cy="5"   r="4.0" fill="#1a1a1a"/>
+      <circle cx="83"  cy="30"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="78"  cy="55"  r="3.0" fill="#1a1a1a"/>
+      <circle cx="73"  cy="80"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="68"  cy="105" r="3.2" fill="#1a1a1a"/>
+      <circle cx="93"  cy="30"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="98"  cy="55"  r="3.0" fill="#1a1a1a"/>
+      <circle cx="103" cy="80"  r="2.6" fill="#1a1a1a"/>
+      <circle cx="108" cy="105" r="3.2" fill="#1a1a1a"/>
     </svg>
   </div>
 
@@ -593,19 +740,22 @@
 
   <p class="hero-about">
     BrainAlgos is an independent consultancy specialising in complex systems. We go beyond surface metrics to understand how and why a system behaves the way it does.
-
-    Using a combination of data analysis, computational modelling, statistical reasoning, and first-principles thinking, we develop genuine insight into system behaviour. 
-    Not just what the data shows, but what it means and what to do about it.
-
-    That insight is what makes the difference when the goal is to scale a system or adapt it to a new environment. Knowing which levers to press, and why they work, is what 
-    separates durable solutions from temporary fixes. We bring that depth to problems in data infrastructure, system design, and research, drawing on expertise that spans neural circuits, information theory, large-scale computation, and machine learning.
+  </p>
+  <p class="hero-about" style="margin-top: 16px;">
+    Using data analysis, computational modelling, and reasoning from first principles, we develop genuine insight into system behaviour. Our goal is always practical: solutions that scale and last.
+  </p>
+  <p class="hero-about" style="margin-top: 16px;">
+    This insight makes it possible to scale or adapt a system to a changing environment. Knowing which levers to press, and why these levers work, separates durable solutions from temporary fixes. We bring that depth to problems in data infrastructure, system design, and research, drawing on expertise that spans neural networks, information theory, large-scale computation, and machine learning.
+  </p>
+  <p class="hero-about" style="margin-top: 16px;">
+    Whatever the problem, we start by understanding it properly.
   </p>
 
   <p class="hero-scroll">Work</p>
 </section>
 
 <!-- ── RESEARCH SECTION ── -->
-<div id="research" style="padding-top: 40px;">
+<div id="research" style="padding-top: 16px;">
 <div class="section">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -619,7 +769,7 @@
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">Neuroscience · AI · Systems Design</div>
       <h3 class="card-title">Scalable Neural Systems: Principles from Biology for Engineered Design</h3>
-      <p class="card-summary">How the brain achieves scalable, resource-efficient architecture — and what that means for AI infrastructure design.</p>
+      <p class="card-summary">How the brain achieves scalable, resource-efficient architecture, and what that means for AI infrastructure design.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
         Read more
@@ -667,7 +817,7 @@
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">Neuroscience · Deep Learning</div>
       <h3 class="card-title">Bridging Insect Learning Circuits and Deep Learning</h3>
-      <p class="card-summary">A simple, fully mapped biological circuit that outperforms large AI systems on certain tasks — and what it can teach us.</p>
+      <p class="card-summary">A simple, fully mapped biological circuit that outperforms large AI systems on certain tasks, and what it can teach us.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
         Read more
@@ -690,7 +840,7 @@
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">AI · Clinical Research · Neuroscience</div>
       <h3 class="card-title">Early Detection of Alzheimer's Disease Using Hybrid Machine Learning</h3>
-      <p class="card-summary">A novel hybrid algorithm achieving up to 80% accuracy on early-stage AD prediction — designed for small clinical datasets.</p>
+      <p class="card-summary">A novel hybrid algorithm achieving up to 80% accuracy on early-stage AD prediction, designed for small clinical datasets.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
         Read more
@@ -720,7 +870,7 @@
   <div class="section-header">
     <span class="section-num">02</span>
     <h2 class="section-title">Consulting & Engineering</h2>
-    <p class="section-desc">Software, systems and infrastructure work across two decades — from internet backbone hardware to AI-powered document analysis.</p>
+    <p class="section-desc">Software, systems and infrastructure work across two decades. From internet backbone hardware to AI-powered document analysis.</p>
   </div>
 
   <div class="project-grid">
@@ -729,7 +879,7 @@
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">NLP · Cryptography · Document Analysis</div>
       <h3 class="card-title">Sensitive Information Detection and Selective Readership</h3>
-      <p class="card-summary">A document intelligence system for a cryptography startup — from chemical manufacturing to Hollywood film production.</p>
+      <p class="card-summary">A document intelligence system for a cryptography startup. From chemical manufacturing to Hollywood film production.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
         Read more
@@ -750,7 +900,7 @@
     <!-- Consulting Card 2 -->
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">HPC · Supercomputing · MPI</div>
-      <h3 class="card-title">Kabru Supercomputer — Network Architecture and Resource Management</h3>
+      <h3 class="card-title">Kabru Supercomputer. Network Architecture and Resource Management</h3>
       <p class="card-summary">Core design team member for Kabru, at the time the second fastest supercomputer in India, supporting physics and weather research.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
@@ -801,9 +951,8 @@
       <p class="contact-sub">Available for consulting, research collaboration, and advisory work.</p>
     </div>
     <div class="contact-right">
-      <a href="mailto:shyam@brainalgos.com" class="contact-link">shyam@brainalgos.com</a>
-      <a href="https://brainalgos.com" class="contact-link" target="_blank">brainalgos.com</a>
-      <a href="https://brainalgos.github.io" class="contact-link" target="_blank">github.com/brainalgos</a>
+      <a href="mailto:shyam@brainalgos.com" class="contact-link contact-link-primary">shyam@brainalgos.com</a>
+      <a href="https://brainalgos.com" class="contact-link contact-link-secondary" target="_blank">brainalgos.com</a>
     </div>
   </div>
 </div>
