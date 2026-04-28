@@ -218,6 +218,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 2px;
+    align-items: stretch;
   }
 
   /* ── PROJECT CARD ── */
@@ -229,6 +230,8 @@
     transition: background 0.2s, border-color 0.2s;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
   }
 
   .card::before {
@@ -253,6 +256,8 @@
     text-transform: uppercase;
     color: #bbb;
     margin-bottom: 14px;
+    height: 44px;
+    overflow: hidden;
   }
 
   .card-title {
@@ -270,6 +275,7 @@
     color: #777;
     line-height: 1.8;
     margin-bottom: 20px;
+    flex-grow: 1;
   }
 
   .card-toggle {
@@ -358,7 +364,7 @@
     border-top: 1px solid var(--faint);
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: start;
+    align-items: stretch;
     gap: 0;
     max-width: 1200px;
     margin: 0 auto;
@@ -383,7 +389,7 @@
   .contact-right {
     display: grid;
     grid-template-rows: auto auto;
-    align-items: start;
+    align-items: stretch;
     gap: 12px;
     text-align: right;
   }
@@ -579,6 +585,7 @@
     <span class="nav-wordmark">BrainAlgos</span>
   </a>
   <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
     <li><a href="#research">Research</a></li>
     <li><a href="#consulting">Consulting</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -761,21 +768,89 @@
   </p>
 </div>
 
+<!-- ── WHAT WE OFFER ── -->
+<div id="services" style="padding-top: 40px;">
+<div class="section">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">What We Offer</h2>
+    <p class="section-desc">Customised analysis, modelling, and tools for complex data problems. With human intelligence.</p>
+  </div>
+
+  <div class="project-grid">
+
+    <!-- Service Card 1 — Data Analysis and Modelling -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Statistics · Machine Learning · Information Theory · Dynamical Systems</div>
+      <h3 class="card-title">Data Analysis and Modelling</h3>
+      <p class="card-summary">Complex data rarely reveals what is actually driving it. We decipher the hidden patterns and model the processes that generate them.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>Complex data rarely reveals what is actually driving it. We use tools from statistics, machine learning, information theory, and dynamical systems to decipher the hidden patterns and model the processes that generate them. The outcome is a clear understanding of your system that allows you to modify it and make it perform the way you need it to.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Card 2 — Tools and Pipelines -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Software Development · Python · R · C++ · Shell Scripts · Custom Pipelines</div>
+      <h3 class="card-title">Tools and Pipelines</h3>
+      <p class="card-summary">When your analysis needs to scale across many datasets or be applied consistently by your team, a custom tool or pipeline is essential.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>When your analysis needs to scale across many datasets or be applied consistently by your team, a custom tool or pipeline is essential. We have extensive experience developing practical software tailored to your specific needs, optimised for speed, scalability, and ease of use. The outcome is a software package that is yours to keep, customised to your use cases, and ready to run.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Service Card 3 — Systems Understanding -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">Complex Systems · Dynamical Systems · Modelling · Insight</div>
+      <h3 class="card-title">Systems Understanding</h3>
+      <p class="card-summary">Systems can be a black box. Modifying one to add functionality or improve performance is risky without understanding how it works.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>Systems can be a black box, and modifying one to add functionality or improve performance is risky without understanding how it works. We are experienced at analysing complex systems and deciphering their nuts and bolts to understand why and how they behave the way they do. The outcome is genuine insight into your system, giving you the confidence to scale it, fix it, or adapt it to new demands without guesswork.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; padding: 40px 0 8px;">
+    <p style="font-family:'Cormorant Garamond',Georgia,serif; font-size:22px; font-weight:300; color:#1a1a1a; letter-spacing:0.02em;">Have a problem that needs solving? <a href="#contact" style="color:#1a1a1a; text-decoration:underline; text-underline-offset:3px;">Let's talk.</a></p>
+  </div>
+
+</div>
+</div>
+
 <!-- ── RESEARCH SECTION ── -->
 <div id="research" style="padding-top: 16px;">
 <div class="section">
   <div class="section-header">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Research</h2>
+    <span class="section-num">02</span>
+    <h2 class="section-title">Past Projects — Research</h2>
     <p class="section-desc">Published and ongoing research in computational neuroscience and complex systems, with direct implications for AI, infrastructure design, and large-scale networks.</p>
   </div>
 
   <div class="project-grid">
 
-    <!-- Research Card 0 — Fractal Scaling (new, most current) -->
+    <!-- Research Card 0 — Shape and Scaling -->
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">Complexity · Network Science · Neuroscience · Infrastructure</div>
-      <h3 class="card-title">Fractal Scaling in Neural Architecture and Complex Networks</h3>
+      <h3 class="card-title">Shape and Scaling Determinants of Complex Networks</h3>
       <p class="card-summary">Neurons and astrocytes are self-similar across scales. The same scaling principles appear to govern cities, transport networks, and other branched systems.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
@@ -791,6 +866,30 @@
             <div class="card-meta-item">Collaborators<span>Scripps Research · OIST Japan</span></div>
             <div class="card-meta-item">Methods<span>Box counting · Multifractal analysis · Moment scaling</span></div>
             <div class="card-meta-item">Status<span>Ongoing</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Card 2 -->
+    <div class="card" onclick="toggleCard(this)">
+      <div class="card-tag">AI · Clinical Research · Neuroscience</div>
+      <h3 class="card-title">Early Detection of Alzheimer's Disease Using Hybrid Machine Learning</h3>
+      <p class="card-summary">A novel hybrid algorithm achieving up to 80% accuracy on early-stage AD prediction, designed for small clinical datasets.</p>
+      <div class="card-toggle">
+        <div class="card-toggle-icon">+</div>
+        Read more
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <p>One of the central challenges in Alzheimer's disease research is predicting onset before symptoms appear. This is difficult because the disease is poorly understood at the causal level, making early indicators hard to identify. At the same time, a growing body of publicly available data now captures biomarkers and clinical symptom markers across different stages of the disease, creating an opportunity to trace how these markers evolve as the disease progresses.</p>
+          <p>A core technical obstacle is data scarcity. Traditional deep learning models require datasets on the order of millions of samples. A good clinical dataset in this domain might have 5,000 patients. This rules out standard approaches and demands something more efficient. We developed a hybrid algorithm that addresses this directly: an information maximisation step first identifies the most predictive biomarkers, which are then fed into a Naive Bayes classifier augmented with a gradient descent optimisation layer to weight the most promising features appropriately. In preliminary results the model achieves up to 80% accuracy on early-stage patient data.</p>
+          <p>A further limitation of most commercial models, including tools like Precivity, is that they operate on a fixed set of biomarkers. Our Bayesian core accumulates evidence across whatever markers are available, making it both flexible and agnostic to the specific inputs a patient presents. The next phase of the work focuses on extending this further, building a model that can generalise across varying biomarker types and data sources without requiring a fixed input schema.</p>
+          <p>This work was carried out as independent research funded in 2024, in association with the Neurolinx Research Institute and in collaboration with scientists at the Alzheimer's Disease Research Center at UC San Diego.</p>
+          <div class="card-meta">
+            <div class="card-meta-item">Affiliation<span>Neurolinx Research Institute · UCSD ADRC</span></div>
+            <div class="card-meta-item">Methods<span>Information maximisation · Naive Bayes · Gradient descent</span></div>
+            <div class="card-meta-item">Status<span>Ongoing · Paper in preparation</span></div>
           </div>
         </div>
       </div>
@@ -821,30 +920,7 @@
       </div>
     </div>
 
-    <!-- Research Card 2 -->
-    <div class="card" onclick="toggleCard(this)">
-      <div class="card-tag">Neuroscience · Machine Learning</div>
-      <h3 class="card-title">Discrimination Learning: How the Brain Separates Similar Experiences</h3>
-      <p class="card-summary">A biological mechanism for learning finer distinctions over time — with direct implications for catastrophic forgetting in AI.</p>
-      <div class="card-toggle">
-        <div class="card-toggle-icon">+</div>
-        Read more
-      </div>
-      <div class="card-body">
-        <div class="card-body-inner">
-          <p>All animals display perceptual learning: two stimuli that are initially indistinguishable become separable through experience. This is a fundamental feature of biological intelligence, yet the mechanism behind it is poorly understood. We investigated this question using olfactory learning in both mammals and invertebrates, giving us a comparative window into whether the underlying mechanism is conserved across very different nervous systems.</p>
-          <p>We showed that variability in olfactory responses, rather than being noise to be eliminated, plays a functional role. Coupled with a recurrent negative feedback mechanism, this variability enables the system to progressively separate the representations of similar stimuli over time. The brain is not simply storing experiences. It is actively restructuring its internal representations through feedback and controlled randomness to make finer and finer distinctions.</p>
-          <p>The implications extend directly into machine learning. One of the persistent challenges in AI is catastrophic forgetting: when a model learns a new category, it tends to overwrite what it previously learned, requiring the whole system to be retrained. The biological mechanism we identified suggests a different approach. By exploiting variability and using recurrent negative feedback to sharpen distinctions incrementally, a system can learn new categories without disturbing existing ones. This points toward more efficient and robust learning architectures that do not require retraining from scratch every time new information is introduced.</p>
-          <div class="card-meta">
-            <div class="card-meta-item">Affiliation<span>UC San Diego · Salk Institute</span></div>
-            <div class="card-meta-item">Methods<span>Recurrent negative feedback · Variability analysis</span></div>
-            <div class="card-meta-item">Status<span>Published</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Research Card 3 -->
+    <!-- Research Card 4 -->
     <div class="card" onclick="toggleCard(this)">
       <div class="card-tag">Neuroscience · Deep Learning</div>
       <h3 class="card-title">Bridging Insect Learning Circuits and Deep Learning</h3>
@@ -867,25 +943,24 @@
       </div>
     </div>
 
-    <!-- Research Card 4 -->
+    <!-- Research Card 3 -->
     <div class="card" onclick="toggleCard(this)">
-      <div class="card-tag">AI · Clinical Research · Neuroscience</div>
-      <h3 class="card-title">Early Detection of Alzheimer's Disease Using Hybrid Machine Learning</h3>
-      <p class="card-summary">A novel hybrid algorithm achieving up to 80% accuracy on early-stage AD prediction, designed for small clinical datasets.</p>
+      <div class="card-tag">Neuroscience · Machine Learning</div>
+      <h3 class="card-title">Discrimination Learning: How the Brain Separates Similar Experiences</h3>
+      <p class="card-summary">A biological mechanism for learning finer distinctions over time — with direct implications for catastrophic forgetting in AI.</p>
       <div class="card-toggle">
         <div class="card-toggle-icon">+</div>
         Read more
       </div>
       <div class="card-body">
         <div class="card-body-inner">
-          <p>One of the central challenges in Alzheimer's disease research is predicting onset before symptoms appear. This is difficult because the disease is poorly understood at the causal level, making early indicators hard to identify. At the same time, a growing body of publicly available data now captures biomarkers and clinical symptom markers across different stages of the disease, creating an opportunity to trace how these markers evolve as the disease progresses.</p>
-          <p>A core technical obstacle is data scarcity. Traditional deep learning models require datasets on the order of millions of samples. A good clinical dataset in this domain might have 5,000 patients. This rules out standard approaches and demands something more efficient. We developed a hybrid algorithm that addresses this directly: an information maximisation step first identifies the most predictive biomarkers, which are then fed into a Naive Bayes classifier augmented with a gradient descent optimisation layer to weight the most promising features appropriately. In preliminary results the model achieves up to 80% accuracy on early-stage patient data.</p>
-          <p>A further limitation of most commercial models, including tools like Precivity, is that they operate on a fixed set of biomarkers. Our Bayesian core accumulates evidence across whatever markers are available, making it both flexible and agnostic to the specific inputs a patient presents. The next phase of the work focuses on extending this further, building a model that can generalise across varying biomarker types and data sources without requiring a fixed input schema.</p>
-          <p>This work was carried out as independent research funded in 2024, in association with the Neurolinx Research Institute and in collaboration with scientists at the Alzheimer's Disease Research Center at UC San Diego.</p>
+          <p>All animals display perceptual learning: two stimuli that are initially indistinguishable become separable through experience. This is a fundamental feature of biological intelligence, yet the mechanism behind it is poorly understood. We investigated this question using olfactory learning in both mammals and invertebrates, giving us a comparative window into whether the underlying mechanism is conserved across very different nervous systems.</p>
+          <p>We showed that variability in olfactory responses, rather than being noise to be eliminated, plays a functional role. Coupled with a recurrent negative feedback mechanism, this variability enables the system to progressively separate the representations of similar stimuli over time. The brain is not simply storing experiences. It is actively restructuring its internal representations through feedback and controlled randomness to make finer and finer distinctions.</p>
+          <p>The implications extend directly into machine learning. One of the persistent challenges in AI is catastrophic forgetting: when a model learns a new category, it tends to overwrite what it previously learned, requiring the whole system to be retrained. The biological mechanism we identified suggests a different approach. By exploiting variability and using recurrent negative feedback to sharpen distinctions incrementally, a system can learn new categories without disturbing existing ones. This points toward more efficient and robust learning architectures that do not require retraining from scratch every time new information is introduced.</p>
           <div class="card-meta">
-            <div class="card-meta-item">Affiliation<span>Neurolinx Research Institute · UCSD ADRC</span></div>
-            <div class="card-meta-item">Methods<span>Information maximisation · Naive Bayes · Gradient descent</span></div>
-            <div class="card-meta-item">Status<span>Ongoing · Paper in preparation</span></div>
+            <div class="card-meta-item">Affiliation<span>UC San Diego · Salk Institute</span></div>
+            <div class="card-meta-item">Methods<span>Recurrent negative feedback · Variability analysis</span></div>
+            <div class="card-meta-item">Status<span>Published</span></div>
           </div>
         </div>
       </div>
@@ -920,8 +995,8 @@
 <div id="consulting" style="padding-top: 40px;">
 <div class="section">
   <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Consulting & Engineering</h2>
+    <span class="section-num">03</span>
+    <h2 class="section-title">Past Projects — Consulting & Engineering</h2>
     <p class="section-desc">Software, systems and infrastructure work across two decades. From internet backbone hardware to AI-powered document analysis.</p>
   </div>
 
