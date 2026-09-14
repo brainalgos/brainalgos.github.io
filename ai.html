@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Musings — BrainAlgos</title>
+<title>Customised AI — BrainAlgos</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -46,33 +46,34 @@
     align-items: center;
     gap: 14px;
     text-decoration: none;
-    color: var(--ink);
   }
 
   .nav-wordmark {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: 24px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.12em;
     color: var(--ink);
+    text-transform: uppercase;
   }
 
-  nav ul {
+  .nav-links {
     display: flex;
     gap: 36px;
     list-style: none;
   }
 
-  nav ul a {
-    font-size: 11px;
-    letter-spacing: 0.18em;
+  .nav-links a {
+    font-size: 13px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    text-decoration: none;
     color: var(--muted);
+    text-decoration: none;
     transition: color 0.2s;
   }
 
-  nav ul a:hover { color: var(--ink); }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a.active { color: var(--ink); }
 
   /* ── PAGE ── */
   .page {
@@ -87,143 +88,128 @@
     padding-bottom: 32px;
   }
 
+  .page-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
   .page-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 300;
     font-size: 48px;
     letter-spacing: 0.04em;
     color: var(--ink);
-    margin-bottom: 8px;
-  }
-
-  .page-subtitle {
-    font-size: 12px;
-    color: var(--muted);
-    letter-spacing: 0.08em;
-  }
-
-  /* ── POST LIST ── */
-  .post-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .post-item {
-    border-bottom: 1px solid var(--faint);
-    padding: 40px 0;
-  }
-
-  .post-item:first-child {
-    border-top: 1px solid var(--faint);
-  }
-
-  .post-meta {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    color: var(--muted);
-    text-transform: uppercase;
     margin-bottom: 12px;
+    line-height: 1.2;
   }
 
-  .post-title {
+  .page-tagline {
     font-family: 'Cormorant Garamond', serif;
-    font-weight: 400;
-    font-size: 28px;
-    letter-spacing: 0.02em;
-    color: var(--ink);
-    line-height: 1.3;
-    margin-bottom: 14px;
-    text-decoration: none;
-    display: block;
+    font-weight: 300;
+    font-size: 20px;
+    color: #666;
+    letter-spacing: 0.03em;
+    font-style: italic;
   }
 
-  .post-title:hover { opacity: 0.7; }
-
-  .post-excerpt {
-    font-size: 13px;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 16px;
+  /* ── SECTIONS ── */
+  .content-section {
+    margin-bottom: 56px;
   }
 
-  .post-tags {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  .read-more {
-    font-size: 11px;
-    letter-spacing: 0.12em;
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.20em;
     text-transform: uppercase;
     color: var(--muted);
-    text-decoration: none;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
     border-bottom: 1px solid var(--faint);
-    padding-bottom: 1px;
-    transition: color 0.2s, border-color 0.2s;
   }
 
-  .read-more:hover { color: var(--ink); border-color: var(--ink); }
-
-  /* ── FULL POST ── */
-  .post-full {
-    display: none;
-  }
-
-  .post-full.open {
-    display: block;
-    margin-top: 24px;
-  }
-
-  .post-body {
+  .section-body {
     font-size: 13px;
-    color: var(--ink);
+    color: #444;
     line-height: 1.9;
   }
 
-  .post-body p {
-    margin-bottom: 20px;
+  .section-body p {
+    margin-bottom: 18px;
   }
 
-  .post-image {
-    width: 100%;
-    max-width: 560px;
-    margin: 28px 0;
-    display: block;
+  .section-body p:last-child {
+    margin-bottom: 0;
   }
 
-  .post-image-caption {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    margin-top: -20px;
+  /* ── CAPABILITY BLOCKS ── */
+  .capability {
     margin-bottom: 28px;
+    padding-left: 20px;
+    border-left: 2px solid var(--faint);
   }
 
-  .post-feedback {
-    margin-top: 32px;
-    padding-top: 20px;
-    border-top: 1px solid var(--faint);
-    font-size: 12px;
-    color: var(--muted);
-  }
-
-  .post-feedback a {
+  .capability-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
     color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    margin-bottom: 6px;
   }
+
+  .capability-desc {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.8;
+  }
+
+  /* ── CTA ── */
+  .cta {
+    margin-top: 64px;
+    padding: 40px 48px;
+    background: var(--paper);
+    border: 1px solid var(--faint);
+    text-align: center;
+  }
+
+  .cta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .cta-link {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--faint);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .cta-link:hover { color: var(--ink); border-color: var(--ink); }
 
   /* ── FOOTER ── */
   footer {
     text-align: center;
-    padding: 48px;
+    padding: 32px 48px;
     font-size: 11px;
     color: var(--muted);
     letter-spacing: 0.1em;
     border-top: 1px solid var(--faint);
     line-height: 2;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .page { padding: 100px 24px 64px; }
+    .cta { padding: 32px 24px; }
   }
 </style>
 </head>
@@ -353,12 +339,12 @@
     </svg>
     <span class="nav-wordmark">BrainAlgos</span>
   </a>
-  <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="index.html#services">Services</a></li>
-    <li><a href="index.html#research">Research</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+  <ul class="nav-links">
+    <li><a href="ai.html" class="active">Customised AI</a></li>
+    <li><a href="modelling.html">Modelling</a></li>
+    <li><a href="background.html">Background</a></li>
     <li><a href="musings.html">Musings</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
 
@@ -366,54 +352,62 @@
 <div class="page">
 
   <div class="page-header">
-    <h1 class="page-title">Musings</h1>
-    <p class="page-subtitle">Thoughts on data, systems, biology, and whatever else catches my attention.</p>
+    <p class="page-label">BrainAlgos</p>
+    <h1 class="page-title">Customised AI</h1>
+    <p class="page-tagline">Customised AI solutions for complex problems.</p>
   </div>
 
-  <div class="post-list">
+  <!-- WHY YOU NEED US -->
+  <div class="content-section">
+    <p class="section-label">Why you need us</p>
+    <div class="section-body">
+      <p>You might have data that is sensitive and confidential. Can you afford to have it on the cloud, the internet, or for it to be used as training data for other models? If the answer is no, you need a private customised AI solution.</p>
+      <p>Alternatively, you might have a large database where it is not feasible to use a large frontier model. What you need is an AI model customised to your particular dataset, one that can perform as well or better than a general LLM for your specific use case.</p>
+      <p>You could fall into either or both categories, and want to develop tools that enhance your workflows — process data faster, schedule tasks, or devise automated workflows for routine operations. We can build these on top of your private AI foundation.</p>
+    </div>
+  </div>
 
-    <!-- ── POST 1 ── -->
-    <div class="post-item">
-      <p class="post-meta">April 27, 2026 &nbsp;·&nbsp; Conference</p>
-      <a class="post-title" href="#" onclick="togglePost('post1'); return false;">
-        Cell Shape as a Disease Marker: Observations from AACR 2026
-      </a>
-      <p class="post-excerpt">I attended the AACR meeting in San Diego for the first time last week. I usually go to SfN, NeurIPS and Biology conferences. This was different, and I am glad I went. With this focus on the cell, I noted that one cell characteristic that was missing was the shape of the cell...</p>
-      <div class="post-full" id="post1">
-        <div class="post-body">
-          <p>I attended the AACR meeting in San Diego for the first time last week. I usually go to SfN, NeurIPS and Biology conferences. This was different, and I am glad I went. I had a lot of conversations with scientists and others from industry and academia. As one would expect at a cancer conference, there were a remarkable number of studies using various tools, genomics, biomarker testing to essentially test the advancement and/or presence of disease and the type of disease. There were many booths, and studies that were even looking at differences in cell characteristics like the change in stiffness with cancer. With this focus on the cell, I noted that one cell characteristic that was missing was the shape of the cell, and the question whether it changed with cancer.</p>
-          <p>I was attuned to this question because I have been focused on this question in studying the shape of neurons and astrocytes in the brain. We have been studying them across species and also across different regions, and have come up with a way to mathematically characterize their shape, a sort of mathematical signature. This is handy because it lets us examine whether the cells change their shape between regions or species, and if they do, how these changes in the cell scale with size. This characterization could then allow us to link these changes to functional differences. This change, however, does not happen between regions alone. It also occurs within the same region with disease.</p>
-          <img src="piriformAstrocyte.jpg" alt="Astrocytes and neurons in the piriform cortex" class="post-image"/>
-          <p class="post-image-caption">Astrocytes in green and neurons in red, show cells with different shapes in the piriform cortex in the brain. Image: Srinivasan Lab.</p>
-          <p>A friend of mine is doing research in addiction, and she found that these same cells change shape in mice that are addicted. For example the astrocytes are smaller and our algorithm can detect these changes. I was struck by how we could apply the same algorithms as another avenue for testing changes that might be occurring with cancer progression, and thus as a marker for cancer. One would think that neuroscience and cancer have little in common, but the underlying tools and techniques to study such systems, such as histology or genomics, are the same. Then, it makes sense that the analysis and algorithms used for making sense of the data might also have a lot in common. Maybe a cell shape tool might be the next tool in a cancer biologist's arsenal.</p>
-        </div>
-        <p class="post-tags">#AACR2026 &nbsp;·&nbsp; #CellBiology &nbsp;·&nbsp; #ComputationalBiology &nbsp;·&nbsp; #CellShape</p>
-        <div class="post-feedback">
-          Thoughts on this? <a href="mailto:shyam@brainalgos.com">Email me.</a>
-        </div>
-      </div>
-      <br/>
-      <a class="read-more" href="#" onclick="togglePost('post1'); return false;" id="post1-toggle">Read more</a>
+  <!-- WHAT WE CAN DO -->
+  <div class="content-section">
+    <p class="section-label">What we can do for you</p>
+
+    <div class="capability">
+      <p class="capability-title">Full stack solution</p>
+      <p class="capability-desc">We can set up your infrastructure based on your data needs, prepare and clean your data, customise the model to it, and implement agents and algorithms that address your specific challenges and improve your workflows.</p>
     </div>
 
+    <div class="capability">
+      <p class="capability-title">AI where it helps, algorithms where they work</p>
+      <p class="capability-desc">Not all solutions require AI. We can devise a mix of AI and traditional algorithms depending on your needs — and we will tell you honestly which approach fits your problem best.</p>
+    </div>
+
+    <div class="capability">
+      <p class="capability-title">Experience with complex problems</p>
+      <p class="capability-desc">We have extensive experience devising solutions for complex problems and dealing with failures in research. We bring the same rigour and persistence to solving your challenges.</p>
+    </div>
   </div>
+
+  <!-- BACKGROUND LINK -->
+  <div class="content-section">
+    <p class="section-label">Our background</p>
+    <div class="section-body">
+      <p>Our experience spans computational neuroscience, large-scale software engineering, high-performance computing, and clinical data analysis. See our <a href="background.html" style="color:var(--ink); text-decoration:underline; text-underline-offset:3px;">background and past projects</a> for the full picture.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p class="cta-text">If this applies to you, shoot us an email and let's dig deeper.</p>
+    <a href="mailto:shyam@brainalgos.com" class="cta-link">shyam@brainalgos.com</a>
+  </div>
+
 </div>
 
 <!-- ── FOOTER ── -->
 <footer>
   <p>BrainAlgos · Shyam Srinivasan</p>
-  <p>Complex Data. Clear Insight.</p>
+  <p>Customised Solutions. Clear Insight.</p>
 </footer>
-
-<script>
-  function togglePost(id) {
-    const post = document.getElementById(id);
-    const toggle = document.getElementById(id + '-toggle');
-    const isOpen = post.classList.contains('open');
-    post.classList.toggle('open');
-    toggle.textContent = isOpen ? 'Read more' : 'Read less';
-  }
-</script>
 
 </body>
 </html>
